@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# script loops from 1 to 10-> "bad luck" printed for the 4th
+# loop iteration, "good luck" printed for the 8th loop iteration,&
+# Best School for the other iterations
+k=1
+while ((k <= 10))
+do
+	if ((k == 4))
+	then
+		echo "bad luck"
+	elif ((k == 8))
+	then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+
+	k=$((k+1))
+done
