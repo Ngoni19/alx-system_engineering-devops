@@ -1,1 +1,1 @@
-# Loops, conditions and parsing
+# Bash scripting: Loops, conditions and parsing
