@@ -2,3 +2,4 @@
 # Script-> displays listening ports
 # it shows the PID & name of the program to which socket belongs
 netstat -pl
+
