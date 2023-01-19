@@ -2,4 +2,4 @@
 # Bash script uses ssh to connect to a server
 # private key ~/.ssh/school; user ubuntu; host IP given as 52.86.78.224
 
-ssh -i ~/.ssh/school ubuntu@52.86.78.224
+ssh -i school ubuntu@52.86.78.224
