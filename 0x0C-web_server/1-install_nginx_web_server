@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Script to Install nginx on web server; Nginx should be listening on port 80
-# 	   curl http://52.86.78.224/ -> returns string "Hello World!"
-#	   curl http://52.86.78.224/ -> returns header info
+# Script to Install nginx on web server; Nginx listens on port 80
+# 	   curl http://54.91.176.221/ -> returns string "Hello World!"
+#	   curl http://54.91.176.221/ -> returns header info
 
 sudo apt-get -y update
 sudo apt-get -y install nginx
