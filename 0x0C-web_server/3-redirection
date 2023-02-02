@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Script configures Nginx server so that /redirect_me is redirecting to another page
+# redirection is “301 Moved Permanently”
+
+ADD301_REDIRECT="\\\tlocation /redirect_me {\n\t\t return 301 https://facebook.com;\n\t}\n"
+
+sudo apt-get update
+sudo apt-get -y install nginx
+echo "Hello world!" | sudo tee /usr/share/nginx/html/index.html
+sudo sed -i "30i $ADD301_REDIRECT" /etc/nginx/sites-available/default #line 30 add
+sudo service nginx start
