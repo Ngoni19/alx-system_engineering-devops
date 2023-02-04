@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Script runs as non-root user & takes username from first arg passed
+
+sudo -u "$1" whoami
