@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-#Fix curl error message by starting Apache server
-
-sudo service apache2 start
+# Script configures a server in a docker container
+echo "ServerName localhost" >> /etc/apache2.conf
+service apache2 start
