@@ -2,31 +2,25 @@
 # The script configures ->brand new ubuntu machine
 # to the requirements of servers behind a load balancer.
 
-apt-get update
-apt-get install -y nginx
-service nginx start
+ADD301_REDIRECT="\\\tlocation /redirect_me {\n\t\t return 301 https://google.com;\n\t}\n"
+ADD404_NOTFOUND="error_page 404 /custom_404.html;\n\\tlocation = /custom_404.html {\n\t\t root /usr/share/nginx/html;\n\t\tinternal;\n\t}\n"
+PATTERN="#error_page 404 /404.html;"
+ADD_HEADER="\\\tadd_header X-Served-By $HOSTNAME;"
 
-mkdir -p /var/www/html
-cd /var/www/html; touch index.html 404.html
-echo "Hello World!" > index.html
-echo "Ceci n'est pas une page" > 404.html; cd -
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo service nginx start
 
-echo "server {
-	listen 80 default_server;
-	listen [::]:80 default_server;
-	add_header X-Served-By $HOSTNAME;
-	root /var/www/html;
-	index index.html index.htm;
+echo "Hello World!" | sudo tee /usr/share/nginx/html/index.html
 
-	location /redirect_me {
-	return 301 https://www.google.com;
-	}
-	
-	error_page 404 /404.html;
-	location /404 {
-	root /var/www/html;
-	internal;
-	}
-}" > /etc/nginx/sites-available/default
+# redirect me to google page
+sudo sed -i "30i $ADD301_REDIRECT" /etc/nginx/sites-available/default
 
-service nginx restart
+# Shows new custom_404.html page - for error
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/custom_404.html
+sudo sed -i "s@$PATTERN@$ADD404_NOTFOUND@" /etc/nginx/sites-available/default
+
+# Update header (add_header to file)
+sudo sed -i "27i $ADD_HEADER" /etc/nginx/sites-available/default
+
+sudo service nginx restart
