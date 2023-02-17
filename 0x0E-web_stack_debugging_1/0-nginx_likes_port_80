@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #The script configures a server,to fix the nginx listening port
-sed -i 's/listen 8080/listen 80/g' /etc/nginx/sites-enabled/default
-sed -i 's/listen \[::\]:8080/listen \[::\]:80/g' /etc/nginx/sites-enabled/default
-service nginx restart
+sudo sed -i 's/listen 8080/listen 80/g' /etc/nginx/sites-enabled/default
+sudo sed -i 's/listen \[::\]:8080/listen \[::\]:80/g' /etc/nginx/sites-enabled/default
+sudo service nginx restart
