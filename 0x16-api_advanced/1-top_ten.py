@@ -10,7 +10,6 @@ def top_ten(subreddit):
         Retur--> top ten titles for a given subreddit
         Return--> None if invalid subreddit
     """
-    
     headers = requests.utils.default_headers()
     headers.update({'User-Agent': 'My User Agent 1.0'})
 
