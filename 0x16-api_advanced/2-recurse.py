@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Script--> Query Reddit API recursively for all hot articles of a given subreddit
+Script--> Query Reddit API recursively;
+for all hot articles of a given subreddit
 """
 import requests
 
